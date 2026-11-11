@@ -56,6 +56,11 @@ const codex = new Codex({ env })
 
 function thread() {
   return codex.startThread({
+    // Explicitly select a ChatGPT Plus Codex-supported model.
+    // Without this, Codex inherits ~/.codex/config.toml (which may specify
+    // an API-only / unavailable model such as gpt-5.5).
+    model: 'gpt-6-luna',
+    modelReasoningEffort: 'low',
     workingDirectory: WORKSPACE,
     skipGitRepoCheck: true,
     sandboxMode: 'read-only',
