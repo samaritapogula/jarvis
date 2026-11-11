@@ -17,7 +17,10 @@
     "preview": "vite preview",
     "bridge": "node bridge/server.mjs",
     "bridge:writes": "node bridge/server.mjs --writes",
-    "setup": "node scripts/setup.mjs"
+    "setup": "node scripts/setup.mjs",
+    "start:plus": "node scripts/start-plus.mjs",
+    "setup:plus": "node scripts/setup-plus.mjs",
+    "bridge:plus": "node bridge/openai-server.mjs"
   },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.3.220",
@@ -36,7 +39,9 @@
     "three": "^0.185.1",
     "ws": "^8.21.1",
     "zod": "^4.4.3",
-    "zustand": "^5.0.14"
+    "zustand": "^5.0.14",
+    "@openai/codex": "latest",
+    "@openai/codex-sdk": "latest"
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.5",
