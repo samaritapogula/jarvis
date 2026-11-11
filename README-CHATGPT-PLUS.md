@@ -75,5 +75,18 @@ npm run build, and npm run start:plus in that order.
 - Existing npm start / npm run bridge remain the **original Claude mode**;
   use **npm run start:plus** for ChatGPT mode.
 
+## If Codex says a model is unsupported
+
+An existing global Codex configuration may select a model like `gpt-5.5`
+that is not available through ChatGPT-account sign-in. The Plus bridge now
+explicitly requests `gpt-6-luna` at low reasoning effort, instead of inheriting
+that setting. After pulling the latest branch, stop the existing JARVIS launcher
+with Ctrl-C and run `npm run start:plus` again. To test the login independently:
+
+    ./node_modules/.bin/codex exec --model gpt-6-luna --sandbox read-only "Reply with exactly: JARVIS ONLINE"
+
+The direct Codex command requires `--model` because it otherwise continues
+to inherit your global default. No system-wide configuration change is needed.
+
 Official SDK: https://github.com/openai/codex/tree/main/sdk/typescript
 Official plan docs: https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan
