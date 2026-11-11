@@ -9,7 +9,9 @@ const LOCAL_NAMES = new Set(['localhost', '127.0.0.1', '[::1]'])
 export function localHost(header) {
   if (typeof header !== 'string' || !header) return false
   try {
-    return LOCAL_NAMES.has(new URL('http://' + header).hostname.toLowerCase())
+    const url = new URL('http://' + header)
+    return !url.username && !url.password && url.pathname === '/' && !url.search && !url.hash &&
+      LOCAL_NAMES.has(url.hostname.toLowerCase())
   } catch {
     return false
   }
